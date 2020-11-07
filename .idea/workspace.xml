@@ -53,23 +53,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56de39ee-56c4-40ce-b1d6-9fc83f6dd7e0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/.vscode/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/__serverless.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/handler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/handlers/getProductById.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/handlers/getProducts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/lib/handler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/lib/handler.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/lib/serverless.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/lib/serverless.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/mocks/productsMockData.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/serverless.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,8 +108,16 @@
       <updated>1604349944203</updated>
       <workItem from="1604349945442" duration="290000" />
       <workItem from="1604350857427" duration="296000" />
-      <workItem from="1604351170198" duration="2733000" />
+      <workItem from="1604351170198" duration="2808000" />
     </task>
+    <task id="LOCAL-00001" summary="be feature">
+      <created>1604781864087</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604781864087</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +147,15 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="be feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="be feature" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="415" y="128" key="CommitChangelistDialog2" timestamp="1604781863883">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="415" y="128" key="CommitChangelistDialog2/0.0.1792.1120@0.0.1792.1120" timestamp="1604781863883" />
     <state x="100" y="100" width="1592" height="920" key="DiffContextDialog" timestamp="1604354693607">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -163,5 +164,13 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1604352367416" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1604781881908">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1604781881908" />
+    <state x="595" y="301" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1604781898953">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="595" y="301" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1604781898953" />
   </component>
 </project>
