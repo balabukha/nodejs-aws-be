@@ -1,6 +1,6 @@
 import {APIGatewayProxyHandler} from 'aws-lambda';
 import 'source-map-support/register';
-import {products} from '../mocks/productsMockData';
+import db from '../db';
 
 const headers = {
     "Access-Control-Allow-Headers": "Content-Type",
@@ -10,9 +10,11 @@ const headers = {
 
 export const getProducts: APIGatewayProxyHandler = async () => {
 
+    const data = await db;
+
     return {
         statusCode: 200,
         headers,
-        body: JSON.stringify(products, null, 2),
+        body: JSON.stringify(data, null, 2),
     };
 }
