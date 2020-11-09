@@ -41,3 +41,5 @@ functions:
             parameters:
               paths:
                 productId: true
+  invoke:
+    handler: handler.invoke
