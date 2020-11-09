@@ -1,2 +1,0 @@
-import invoke from '../db';
-

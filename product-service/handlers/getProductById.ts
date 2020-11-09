@@ -1,13 +1,10 @@
 import {APIGatewayProxyHandler} from 'aws-lambda';
 import 'source-map-support/register';
-import {Client} from 'pg';
-import {dbOptions} from '../helpers/pg'
 import {headers} from '../helpers/headers'
+import {createClient} from '../loaders/db';
 
 export const getProductById: APIGatewayProxyHandler = async (event, _context) => {
-    const client = new Client(dbOptions);
-    await client.connect();
-
+    const client = await createClient();
 
     console.log('connected to DB');
 
