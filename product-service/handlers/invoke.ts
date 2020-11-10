@@ -23,8 +23,8 @@ export const invoke: APIGatewayProxyHandler = async () => {
         //make ddl query for creation table
         const ddlResult = await client.query(`
       create table if not exists products (
-        id serial primary key,
-        title text,
+        id uuid primary key default uuid_generate_v4(),
+        title text not null,
         description text,
         price integer
       )`
