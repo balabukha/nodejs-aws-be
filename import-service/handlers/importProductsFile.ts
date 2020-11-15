@@ -1,9 +1,10 @@
+import { APIGatewayProxyHandler } from "aws-lambda";
 import * as AWS from 'aws-sdk';
 import {headers} from '../helpers/headers';
 
 const BUCKET: string = 'node-aws-s3';
 
-export const importProductsFile = async (event) => {
+export const importProductsFile:APIGatewayProxyHandler = async (event) => {
     console.log('Lambda function has been invoked with event:', JSON.stringify(event));
 
     const {queryStringParameters: {name} = {}} = event;
@@ -31,5 +32,4 @@ export const importProductsFile = async (event) => {
             body: JSON.stringify({error: 'Internal server error'})
         }
     }
-
 };
