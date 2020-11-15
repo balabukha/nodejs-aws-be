@@ -1,27 +1,41 @@
 import {APIGatewayProxyHandler} from 'aws-lambda';
 import 'source-map-support/register';
-import {products} from '../mocks/productsMockData';
-
-const headers = {
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET"
-};
+import {headers} from '../helpers/headers'
+import {createClient} from '../loaders/db';
 
 export const getProductById: APIGatewayProxyHandler = async (event, _context) => {
-    const {productId} = event.pathParameters;
-    const product = products.find(product => product.id === productId);
+    const client = await createClient();
 
-    if (Object.keys(product).length) {
-        return {
-            statusCode: 200,
-            headers,
-            body: JSON.stringify(product, null, 2),
-        };
+    console.log('connected to DB');
+
+    let err;
+    let resultProduct;
+    const {productId} = event.pathParameters;
+
+    console.log('GET Product By ID request');
+
+    try {
+        const {
+            rows: resultProductRows,
+        } = await client.query(
+            `select products.*, stocks.count from products left join stocks on products.id=stocks.product_id where products.id=$1`,
+            [productId]
+        );
+        resultProduct = resultProductRows[0];
+
+        if (!resultProduct) {
+            throw "Product does not exist";
+        }
+
+    } catch (error) {
+        err = `no product, error: ${error}`;
+    } finally {
+        client.end();
     }
 
     return {
-        statusCode: 404,
-        body: JSON.stringify(`product wasn't found`, null, 2),
+        statusCode: !err ? 200 : 500,
+        headers,
+        body: !err ? JSON.stringify(resultProduct) : err,
     };
 }
