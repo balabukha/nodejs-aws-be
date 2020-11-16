@@ -1,0 +1,14 @@
+{
+  "Version": "2020-11-15",
+  "Statement": [
+    {
+      "Sid": "AllowPublicRead",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "s3:GetObject",
+      "Resourse": "arn:aws:s3:::node-aws-s3/*"
+    }
+  ]
+}

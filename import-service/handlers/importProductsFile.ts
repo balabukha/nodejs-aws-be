@@ -1,15 +1,14 @@
 import { APIGatewayProxyHandler } from "aws-lambda";
-import * as AWS from 'aws-sdk';
+import { S3 } from "aws-sdk";
 import {headers} from '../helpers/headers';
-
-const BUCKET: string = 'node-aws-s3';
+import { BUCKET, AWS_REGION } from '../helpers/constants';
 
 export const importProductsFile:APIGatewayProxyHandler = async (event) => {
     console.log('Lambda function has been invoked with event:', JSON.stringify(event));
 
     const {queryStringParameters: {name} = {}} = event;
     const path = `uploaded/${name}`;
-    const s3 = new AWS.S3({region: 'eu-west-1'});
+    const s3 = new S3({region: AWS_REGION});
     const params = {
         Bucket: BUCKET,
         Key: path,
