@@ -1,5 +1,5 @@
 import { S3 } from "aws-sdk";
-import * as csv from 'csv-parser';
+const csv = require('csv-parser')
 import {headers} from '../helpers/headers';
 import {AWS_REGION, BUCKET} from '../helpers/constants';
 
