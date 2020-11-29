@@ -28,6 +28,55 @@ provider:
     PG_USERNAME: '${env:PG_USERNAME}'
     PG_PASSWORD: '${env:PG_PASSWORD}'
     DB_HOST: '${env:DB_HOST}'
+    SQS_URL:
+      Ref: SQSQueue
+    SNS_ARN:
+      Ref: SNSTopic
+
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action: "sns:*"
+        Resource:
+          Ref: SNSTopic
+
+  resources:
+    Resources:
+      SQSQueue:
+        Type: AWS::SQS::Queue
+        Properties:
+          QueueName: catalogItemsQueue
+      SNSTopic:
+        Type: AWS::SNS::Topic
+        Properties:
+          TopicName: createProductTopic
+      SNSSubscription:
+        Type: AWS::SNS::Subscription
+        Properties:
+          Endpoint: 5344208@gmail.com
+          Protocol: email
+          TopicArn:
+            Ref: SNSTopic
+          FilterPolicy:
+            priceType:
+              - expensive
+      SNSSubscription2:
+        Type: AWS::SNS::Subscription
+        Properties:
+          Endpoint: 5344208@gmail.com
+          Protocol: email
+          TopicArn:
+            Ref: SNSTopic
+          FilterPolicy:
+            priceType:
+              - inexpensive
+    Outputs:
+      SQSQueueUrl:
+        Value:
+          Ref: SQSQueue
+      SQSQueueArn:
+        Value:
+          Fn::GetAtt: [ SQSQueue, Arn ]
+
 
 functions:
   getProducts:
@@ -57,3 +106,12 @@ functions:
           cors: true
   invoke:
     handler: handler.invoke
+  catalogBatchProcess:
+    handler: handler.catalogBatchProcess
+    events:
+      - sqs:
+          batchSize: 5
+          arn:
+            Fn::GetAtt:
+              - SQSQueue
+              - Arn
