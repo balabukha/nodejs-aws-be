@@ -10,8 +10,8 @@ module.exports = {
   devtool: slsw.lib.webpack.isLocal ? 'cheap-module-eval-source-map' : 'source-map',
   resolve: {
     extensions: ['.mjs', '.json', '.ts'],
-    symlinks: false,
     cacheWithContext: false,
+    symlinks: false,
   },
   output: {
     libraryTarget: 'commonjs',
