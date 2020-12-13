@@ -34,6 +34,18 @@ custom:
     webpackConfig: 'webpack.config.js'
     includeModules: true
 
+resources:
+  Resources:
+    GatewayResponse:
+      Type: 'AWS::ApiGateway::GatewayResponse'
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: DEFAULT_4XX
+        RestApiId:
+          Ref: 'ApiGatewayRestApi'
+
 functions:
   importProductsFile:
     handler: handler.importProductsFile
@@ -46,6 +58,12 @@ functions:
             parameters:
               paths:
                 name: true
+          authorizer:
+            name: basicAuthorizer
+            type: token
+            arn: "${cf:authorization-service-${self:provider.stage}.basicAuthorizerArn}"
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.Authorization
   importFileParser:
     handler: handler.importFileParser
     events:
